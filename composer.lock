@@ -1,0 +1,126 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "28f4a180d955f81509968e128c077df8",
+    "packages": [
+        {
+            "name": "crowdhandler/sdk",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:crowdhandler/crowdhandler-php-sdk.git",
+                "reference": "e94b2a5ee78eb18b96afd2dd34891f5825a4e246"
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": ">= 5.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "CrowdHandler\\": "src/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "richard-mutt-crowdhandler",
+                    "email": "richard.mutt@crowdhandler.com"
+                },
+                {
+                    "name": "lthornton-mm",
+                    "email": "leo.thornton@made.media"
+                },
+                {
+                    "name": "luke-owen-crowdhandler",
+                    "email": "luke.owen@crowdhandler.com"
+                }
+            ],
+            "description": "A PHP library for interacting with CrowdHandler",
+            "homepage": "https://www.crowdhandler.com/",
+            "time": "2021-01-12T12:55:08+00:00"
+        }
+    ],
+    "packages-dev": [
+        {
+            "name": "wordpress/wordpress",
+            "version": "5.6.1",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:WordPress/wordpress-develop.git",
+                "reference": "2a8b96b363d7280e53cb46086ca68ca6122e275e"
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.6.2 || ^0.7.0",
+                "phpcompatibility/phpcompatibility-wp": "^2.1.0",
+                "phpunit/phpunit": "^7.5",
+                "wp-coding-standards/wpcs": "~2.3.0"
+            },
+            "type": "library",
+            "autoload-dev": {
+                "files": [
+                    "tests/phpunit/includes/phpunit7/MockObject/Builder/NamespaceMatch.php",
+                    "tests/phpunit/includes/phpunit7/MockObject/Builder/ParametersMatch.php",
+                    "tests/phpunit/includes/phpunit7/MockObject/InvocationMocker.php",
+                    "tests/phpunit/includes/phpunit7/MockObject/MockMethod.php"
+                ],
+                "exclude-from-classmap": [
+                    "vendor/phpunit/phpunit/src/Framework/MockObject/Builder/NamespaceMatch.php",
+                    "vendor/phpunit/phpunit/src/Framework/MockObject/Builder/ParametersMatch.php",
+                    "vendor/phpunit/phpunit/src/Framework/MockObject/InvocationMocker.php",
+                    "vendor/phpunit/phpunit/src/Framework/MockObject/MockMethod.php"
+                ]
+            },
+            "scripts": {
+                "compat": [
+                    "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --standard=phpcompat.xml.dist --report=summary,source"
+                ],
+                "format": [
+                    "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf --report=summary,source"
+                ],
+                "lint": [
+                    "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --report=summary,source"
+                ],
+                "lint:errors": [
+                    "@lint -n"
+                ],
+                "test": [
+                    "@php ./vendor/phpunit/phpunit/phpunit"
+                ]
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "WordPress is open source software you can use to create a beautiful website, blog, or app.",
+            "homepage": "https://wordpress.org",
+            "keywords": [
+                "blog",
+                "cms",
+                "wordpress",
+                "wp"
+            ],
+            "support": {
+                "issues": "https://core.trac.wordpress.org/"
+            },
+            "time": "2021-02-03T21:10:21+00:00"
+        }
+    ],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "crowdhandler/sdk": 20
+    },
+    "prefer-stable": true,
+    "prefer-lowest": false,
+    "platform": {
+        "php": ">=5.3"
+    },
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
+}

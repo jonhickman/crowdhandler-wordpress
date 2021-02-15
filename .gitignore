@@ -1,0 +1,10 @@
+# Dependencies
+/vendor/
+/vendor-bin/php-scoper/vendor
+
+# Build
+/crowdhandler-wordpress/
+/crowdhandler-wordpress-*.zip
+
+# IDE
+/.idea/
