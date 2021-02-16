@@ -29,3 +29,7 @@
 if (!defined('WP_UNINSTALL_PLUGIN')) {
 	exit;
 }
+
+check_ajax_referer('updates');
+
+delete_option('crowdhandler_settings');
