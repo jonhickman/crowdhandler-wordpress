@@ -85,13 +85,6 @@ class Crowdhandler
 	/**
 	 * Load the required dependencies for this plugin.
 	 *
-	 * Include the following files that make up the plugin:
-	 *
-	 * - Crowdhandler_Loader. Orchestrates the hooks of the plugin.
-	 * - Crowdhandler_i18n. Defines internationalization functionality.
-	 * - Crowdhandler_Admin. Defines all hooks for the admin area.
-	 * - Crowdhandler_Public. Defines all hooks for the public side of the site.
-	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
 	 *
@@ -100,29 +93,6 @@ class Crowdhandler
 	 */
 	private function load_dependencies()
 	{
-		/**
-		 * The class responsible for orchestrating the actions and filters of the
-		 * core plugin.
-		 */
-		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-crowdhandler-loader.php';
-
-		/**
-		 * The class responsible for defining internationalization functionality
-		 * of the plugin.
-		 */
-		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-crowdhandler-i18n.php';
-
-		/**
-		 * The class responsible for defining all actions that occur in the admin area.
-		 */
-		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/class-crowdhandler-admin.php';
-
-		/**
-		 * The class responsible for defining all actions that occur in the public-facing
-		 * side of the site.
-		 */
-		require_once plugin_dir_path(dirname(__FILE__)) . 'public/class-crowdhandler-public.php';
-
 		$this->loader = new Crowdhandler_Loader();
 	}
 

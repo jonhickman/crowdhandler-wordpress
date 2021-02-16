@@ -26,5 +26,12 @@
 	],
 	"require-dev": {
 		"wordpress/wordpress": "^5.6"
+	},
+	"autoload": {
+		"classmap": [
+			"includes/",
+			"admin/",
+			"public/"
+		]
 	}
 }

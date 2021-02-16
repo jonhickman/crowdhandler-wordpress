@@ -48,7 +48,6 @@ define('CROWDHANDLER_VERSION', '1.0.0');
  */
 function activate_crowdhandler()
 {
-	require_once BASE_PATH . 'includes/class-crowdhandler-activator.php';
 	Crowdhandler_Activator::activate();
 }
 
@@ -58,7 +57,6 @@ function activate_crowdhandler()
  */
 function deactivate_crowdhandler()
 {
-	require_once BASE_PATH . 'includes/class-crowdhandler-deactivator.php';
 	Crowdhandler_Deactivator::deactivate();
 }
 
