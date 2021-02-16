@@ -75,11 +75,11 @@ class Crowdhandler_Admin
 		 */
 
 		wp_enqueue_style(
-			$this->plugin_name,
-			BASE_URL . 'admin/css/crowdhandler-admin.css',
-			[],
-			$this->version,
-			'all'
+				$this->plugin_name,
+				CROWDHANDLER_PLUGIN_BASE_URL . 'admin/css/crowdhandler-admin.css',
+				[],
+				$this->version,
+				'all'
 		);
 	}
 
@@ -103,11 +103,11 @@ class Crowdhandler_Admin
 		 */
 
 		wp_enqueue_script(
-			$this->plugin_name,
-			BASE_URL . 'admin/js/crowdhandler-admin.js',
-			['jquery'],
-			$this->version,
-			false
+				$this->plugin_name,
+				CROWDHANDLER_PLUGIN_BASE_URL . 'admin/js/crowdhandler-admin.js',
+				['jquery'],
+				$this->version,
+				false
 		);
 	}
 

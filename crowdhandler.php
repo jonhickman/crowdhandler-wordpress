@@ -30,10 +30,10 @@ if (!defined('WPINC')) {
 	die;
 }
 
-define('BASE_PATH', plugin_dir_path(__FILE__));
-define('BASE_URL', plugin_dir_url(__FILE__));
+define('CROWDHANDLER_PLUGIN_BASE_PATH', plugin_dir_path(__FILE__));
+define('CROWDHANDLER_PLUGIN_BASE_URL', plugin_dir_url(__FILE__));
 
-require_once BASE_PATH . 'vendor/autoload.php';
+require_once CROWDHANDLER_PLUGIN_BASE_PATH . 'vendor/autoload.php';
 
 /**
  * Currently plugin version.
@@ -67,7 +67,7 @@ register_deactivation_hook(__FILE__, 'deactivate_crowdhandler');
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require BASE_PATH . 'includes/class-crowdhandler.php';
+require CROWDHANDLER_PLUGIN_BASE_PATH . 'includes/class-crowdhandler.php';
 
 /**
  * Begins execution of the plugin.

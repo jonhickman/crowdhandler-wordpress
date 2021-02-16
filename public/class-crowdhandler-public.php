@@ -81,7 +81,7 @@ class Crowdhandler_Public
 
 		wp_enqueue_style(
 			$this->plugin_name,
-			BASE_URL . 'public/css/crowdhandler-public.css',
+			CROWDHANDLER_PLUGIN_BASE_URL . 'public/css/crowdhandler-public.css',
 			array(),
 			$this->version,
 			'all'
@@ -109,7 +109,7 @@ class Crowdhandler_Public
 
 		wp_enqueue_script(
 			$this->plugin_name,
-			BASE_URL . 'public/js/crowdhandler-public.js',
+			CROWDHANDLER_PLUGIN_BASE_URL . 'public/js/crowdhandler-public.js',
 			array('jquery'),
 			$this->version,
 			false
