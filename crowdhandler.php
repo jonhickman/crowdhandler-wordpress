@@ -30,8 +30,7 @@ if (!defined('WPINC')) {
 	die;
 }
 
-define('CROWDHANDLER_PLUGIN_BASE_PATH', plugin_dir_path(__FILE__));
-define('CROWDHANDLER_PLUGIN_BASE_URL', plugin_dir_url(__FILE__));
+require_once 'consts.php';
 
 require_once CROWDHANDLER_PLUGIN_BASE_PATH . 'vendor/autoload.php';
 

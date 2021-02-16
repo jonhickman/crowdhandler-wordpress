@@ -141,6 +141,8 @@ class Crowdhandler_Admin
 				__('Settings Saved', 'crowdhandler'),
 				'updated'
 			);
+
+			$this->handleIndexFilesOverrides();
 		}
 
 		// show error/update messages
@@ -179,6 +181,18 @@ class Crowdhandler_Admin
 			'crowdhandler_settings_section',
 			array(
 				'label_for' => 'crowdhandler_settings_field_is_enabled',
+				'class' => 'crowdhandler_row',
+			)
+		);
+
+		add_settings_field(
+			'crowdhandler_settings_field_override_index',
+			__('Override index.php', 'crowdhandler'),
+			array($this, 'settings_field_override_index_callback'),
+			'crowdhandler',
+			'crowdhandler_settings_section',
+			array(
+				'label_for' => 'crowdhandler_settings_field_override_index',
 				'class' => 'crowdhandler_row',
 			)
 		);
@@ -227,12 +241,99 @@ class Crowdhandler_Admin
 			<?php echo isset($options[$args['label_for']]) ? (checked( $options[$args['label_for']], 'on', false )) : ( '' ); ?>
 			id="<?php echo esc_attr( $args['label_for'] ); ?>"
 			name="crowdhandler_settings[<?php echo esc_attr( $args['label_for'] ); ?>]"
-			class="crowdhandler-input crowdhandler-input--textarea"
+			class="crowdhandler-input"
 		>
 		<p class="description">
 			<?php esc_html_e( 'Enabled field description', 'crowdhandler' ); ?>
 		</p>
 		<?php
+	}
+
+	public function settings_field_override_index_callback($args)
+	{
+		$options = get_option('crowdhandler_settings');
+		$canOverrideIndexFile = $this->isIndexFileWritable();
+		$checked = '';
+		if (isset($options[$args['label_for']])) {
+			$checked = checked($options[$args['label_for']], 'on', false);
+		}
+		?>
+		<input
+			type="checkbox"
+			<?php echo $checked; ?>
+			id="<?php echo esc_attr( $args['label_for'] ); ?>"
+			name="crowdhandler_settings[<?php echo esc_attr( $args['label_for'] ); ?>]"
+			class="crowdhandler-input"
+			<?php echo !$canOverrideIndexFile ? 'disabled' : ''; ?>
+		>
+		<?php if (!$canOverrideIndexFile): ?>
+			<p class="description">
+				<strong><?php esc_html_e('Main index.php file is not writable.', 'crowdhandler'); ?></strong>
+			</p>
+		<?php endif; ?>
+		<p class="description">
+			<?php esc_html_e('Override index field description', 'crowdhandler'); ?>
+		</p>
+		<?php
+	}
+
+	public function handleIndexFilesOverrides()
+	{
+		$options = get_option('crowdhandler_settings');
+
+		if (
+				$this->isIndexFileWritable() &&
+				isset($options['crowdhandler_settings_field_is_enabled']) &&
+				$options['crowdhandler_settings_field_is_enabled'] === 'on' &&
+				isset($options['crowdhandler_settings_field_override_index']) &&
+				$options['crowdhandler_settings_field_override_index'] === 'on'
+		) {
+			$data = var_export(
+					array(
+							'plugin_path' => CROWDHANDLER_PLUGIN_BASE_PATH,
+							'options' => $options,
+					),
+					true
+			);
+
+			if (!file_exists(CROWDHANDLER_PLUGIN_INDEX_COPY_FILE_PATH)) {
+				rename(CROWDHANDLER_PLUGIN_INDEX_FILE_PATH, CROWDHANDLER_PLUGIN_INDEX_COPY_FILE_PATH);
+			}
+
+			$fp = fopen(CROWDHANDLER_PLUGIN_INDEX_FILE_PATH, 'w');
+			fwrite($fp, <<<PHP
+<?php
+
+\$config = {$data};
+
+require_once \$config['plugin_path'] . 'vendor/autoload.php';
+
+\$ch = new CrowdHandlerGateKeeper(\$config['options']['crowdhandler_settings_field_public_key']);
+\$ch->checkRequest();
+
+include 'wp-index.php';
+
+\$ch->recordPerformance(http_response_code());
+
+PHP
+			);
+			fclose($fp);
+		} elseif (file_exists(CROWDHANDLER_PLUGIN_INDEX_COPY_FILE_PATH)) {
+			rename(CROWDHANDLER_PLUGIN_INDEX_COPY_FILE_PATH, CROWDHANDLER_PLUGIN_INDEX_FILE_PATH);
+		}
+	}
+
+	private function isIndexFileWritable()
+	{
+		if (!is_writable(ABSPATH)) {
+			return false;
+		}
+
+		if (!is_writable(CROWDHANDLER_PLUGIN_INDEX_FILE_PATH)) {
+			return false;
+		}
+
+		return true;
 	}
 
 }

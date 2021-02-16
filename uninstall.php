@@ -32,4 +32,11 @@ if (!defined('WP_UNINSTALL_PLUGIN')) {
 
 check_ajax_referer('updates');
 
+
+require_once 'consts.php';
+
+if (file_exists(CROWDHANDLER_PLUGIN_INDEX_COPY_FILE_PATH)) {
+	rename(CROWDHANDLER_PLUGIN_INDEX_COPY_FILE_PATH, CROWDHANDLER_PLUGIN_INDEX_FILE_PATH);
+}
+
 delete_option('crowdhandler_settings');
