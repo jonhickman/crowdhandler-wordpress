@@ -42,6 +42,11 @@ class Crowdhandler_Public
 	private $version;
 
 	/**
+	 * @var CrowdHandlerGateKeeper
+	 */
+	private $gateKeeper;
+
+	/**
 	 * Initialize the class and set its properties.
 	 *
 	 * @param string $plugin_name The name of the plugin.
@@ -109,6 +114,22 @@ class Crowdhandler_Public
 			$this->version,
 			false
 		);
+	}
+
+	public function checkRequest()
+	{
+		if (!$this->gateKeeper) {
+			$this->gateKeeper = new CrowdHandlerGateKeeper();
+		}
+
+		$this->gateKeeper->checkRequest();
+	}
+
+	public function recordPerformance()
+	{
+		if ($this->gateKeeper) {
+			$this->gateKeeper->recordPerformance(http_response_code());
+		}
 	}
 
 }
