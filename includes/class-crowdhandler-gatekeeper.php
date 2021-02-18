@@ -16,6 +16,16 @@ class CrowdHandlerGateKeeper
 	private $options;
 
 	/**
+	 * @var bool
+	 */
+	private $requestChecked = false;
+
+	/**
+	 * @var bool
+	 */
+	private $requestPerformanceRecorded = false;
+
+	/**
 	 * @param array $options
 	 */
 	public function __construct($options = null)
@@ -29,7 +39,7 @@ class CrowdHandlerGateKeeper
 
 	public function checkRequest()
 	{
-		if (!$this->isEnabled()) {
+		if ((function_exists('is_admin') && is_admin()) || !$this->isEnabled() || $this->requestChecked) {
 			return $this;
 		}
 
@@ -43,12 +53,14 @@ class CrowdHandlerGateKeeper
 		$this->gateKeeper->redirectIfNotPromoted();
 		$this->gateKeeper->setCookie();
 
+		$this->requestChecked = true;
+
 		return $this;
 	}
 
 	public function recordPerformance($code)
 	{
-		if (!$this->isEnabled()) {
+		if ((function_exists('is_admin') && is_admin()) || !$this->isEnabled() || $this->requestPerformanceRecorded) {
 			return false;
 		}
 
@@ -57,6 +69,7 @@ class CrowdHandlerGateKeeper
 		}
 
 		try {
+			$this->requestPerformanceRecorded = true;
 			$this->gateKeeper->recordPerformance($code);
 		} catch (\Exception $e) {
 			return false;

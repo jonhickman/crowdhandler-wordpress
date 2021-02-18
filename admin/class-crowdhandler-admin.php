@@ -310,12 +310,12 @@ class Crowdhandler_Admin
 
 require_once \$config['plugin_path'] . 'vendor/autoload.php';
 
-\$ch = new CrowdHandlerGateKeeper(\$config['options']['crowdhandler_settings_field_public_key']);
-\$ch->checkRequest();
+\$crowdHandlerGateKeeper = new CrowdHandlerGateKeeper(\$config['options']);
+\$crowdHandlerGateKeeper->checkRequest();
 
 include 'wp-index.php';
 
-\$ch->recordPerformance(http_response_code());
+\$crowdHandlerGateKeeper->recordPerformance(http_response_code());
 
 PHP
 				);
