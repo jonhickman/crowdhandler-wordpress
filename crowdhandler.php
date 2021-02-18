@@ -9,14 +9,14 @@
  * that starts the plugin.
  *
  * @link              https://www.crowdhandler.com/
- * @since             1.0.0
+ * @since             0.1.0
  * @package           Crowdhandler
  *
  * @wordpress-plugin
  * Plugin Name:       CrowdHandler™ Virtual Waiting Room - Protect your Website
  * Plugin URI:        https://www.crowdhandler.com/
  * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
- * Version:           1.0.0
+ * Version:           0.1.0
  * Author:            CROWDHANDLER LTD
  * Author URI:        https://www.crowdhandler.com/
  * License:           GPL-2.0+
@@ -36,10 +36,10 @@ require_once CROWDHANDLER_PLUGIN_BASE_PATH . 'vendor/autoload.php';
 
 /**
  * Currently plugin version.
- * Start at version 1.0.0 and use SemVer - https://semver.org
+ * Start at version 0.1.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define('CROWDHANDLER_VERSION', '1.0.0');
+define('CROWDHANDLER_VERSION', '0.1.0');
 
 /**
  * The code that runs during plugin activation.
@@ -75,7 +75,7 @@ require CROWDHANDLER_PLUGIN_BASE_PATH . 'includes/class-crowdhandler.php';
  * then kicking off the plugin from this point in the file does
  * not affect the page life cycle.
  *
- * @since    1.0.0
+ * @since    0.1.0
  */
 function run_crowdhandler()
 {

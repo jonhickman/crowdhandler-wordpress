@@ -4,7 +4,7 @@
  * Fired during plugin deactivation
  *
  * @link       https://www.crowdhandler.com/
- * @since      1.0.0
+ * @since      0.1.0
  *
  * @package    Crowdhandler
  * @subpackage Crowdhandler/includes
@@ -15,7 +15,7 @@
  *
  * This class defines all code necessary to run during the plugin's deactivation.
  *
- * @since      1.0.0
+ * @since      0.1.0
  * @package    Crowdhandler
  * @subpackage Crowdhandler/includes
  * @author     CROWDHANDLER LTD <hello@crowdhandler.com>
@@ -28,7 +28,7 @@ class Crowdhandler_Deactivator
 	 *
 	 * Long Description.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 */
 	public static function deactivate()
 	{

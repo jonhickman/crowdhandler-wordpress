@@ -7,7 +7,7 @@
  * public-facing side of the site and the admin area.
  *
  * @link       https://www.crowdhandler.com/
- * @since      1.0.0
+ * @since      0.1.0
  *
  * @package    Crowdhandler
  * @subpackage Crowdhandler/includes
@@ -22,7 +22,7 @@
  * Also maintains the unique identifier of this plugin as well as the current
  * version of the plugin.
  *
- * @since      1.0.0
+ * @since      0.1.0
  * @package    Crowdhandler
  * @subpackage Crowdhandler/includes
  * @author     CROWDHANDLER LTD <hello@crowdhandler.com>
@@ -34,7 +34,7 @@ class Crowdhandler
 	 * The loader that's responsible for maintaining and registering all hooks that power
 	 * the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   protected
 	 * @var      Crowdhandler_Loader $loader Maintains and registers all hooks for the plugin.
 	 */
@@ -43,7 +43,7 @@ class Crowdhandler
 	/**
 	 * The unique identifier of this plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   protected
 	 * @var      string $plugin_name The string used to uniquely identify this plugin.
 	 */
@@ -52,7 +52,7 @@ class Crowdhandler
 	/**
 	 * The current version of the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   protected
 	 * @var      string $version The current version of the plugin.
 	 */
@@ -65,14 +65,14 @@ class Crowdhandler
 	 * Load the dependencies, define the locale, and set the hooks for the admin area and
 	 * the public-facing side of the site.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 */
 	public function __construct()
 	{
 		if (defined('CROWDHANDLER_VERSION')) {
 			$this->version = CROWDHANDLER_VERSION;
 		} else {
-			$this->version = '1.0.0';
+			$this->version = '0.1.0';
 		}
 		$this->plugin_name = 'crowdhandler';
 
@@ -88,7 +88,7 @@ class Crowdhandler
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   private
 	 */
 	private function load_dependencies()
@@ -102,7 +102,7 @@ class Crowdhandler
 	 * Uses the Crowdhandler_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   private
 	 */
 	private function set_locale()
@@ -116,7 +116,7 @@ class Crowdhandler
 	 * Register all of the hooks related to the admin area functionality
 	 * of the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   private
 	 */
 	private function define_admin_hooks()
@@ -134,7 +134,7 @@ class Crowdhandler
 	 * WordPress and to define internationalization functionality.
 	 *
 	 * @return    string    The name of the plugin.
-	 * @since     1.0.0
+	 * @since     0.1.0
 	 */
 	public function get_plugin_name()
 	{
@@ -145,7 +145,7 @@ class Crowdhandler
 	 * Retrieve the version number of the plugin.
 	 *
 	 * @return    string    The version number of the plugin.
-	 * @since     1.0.0
+	 * @since     0.1.0
 	 */
 	public function get_version()
 	{
@@ -156,15 +156,12 @@ class Crowdhandler
 	 * Register all of the hooks related to the public-facing functionality
 	 * of the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   private
 	 */
 	private function define_public_hooks()
 	{
 		$plugin_public = new Crowdhandler_Public($this->get_plugin_name(), $this->get_version());
-
-		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_styles');
-		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
 
 		global $crowdHandlerGateKeeper;
 		if (!isset($crowdHandlerGateKeeper) || !$crowdHandlerGateKeeper instanceof CrowdHandlerGateKeeper) {
@@ -177,7 +174,7 @@ class Crowdhandler
 	/**
 	 * Run the loader to execute all of the hooks with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 */
 	public function run()
 	{
@@ -188,7 +185,7 @@ class Crowdhandler
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
 	 * @return    Crowdhandler_Loader    Orchestrates the hooks of the plugin.
-	 * @since     1.0.0
+	 * @since     0.1.0
 	 */
 	public function get_loader()
 	{
