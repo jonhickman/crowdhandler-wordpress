@@ -35,8 +35,18 @@ check_ajax_referer('updates');
 
 require_once 'consts.php';
 
-if (file_exists(CROWDHANDLER_PLUGIN_INDEX_COPY_FILE_PATH)) {
-	rename(CROWDHANDLER_PLUGIN_INDEX_COPY_FILE_PATH, CROWDHANDLER_PLUGIN_INDEX_FILE_PATH);
+if (get_filesystem_method() === 'direct') {
+	$creds = request_filesystem_credentials(site_url() . '/wp-admin/', '', false, false, array());
+	if (!WP_Filesystem($creds)) {
+		return false;
+	}
+
+	/** @var WP_Filesystem_Direct $wp_filesystem */
+	global $wp_filesystem;
+
+	if ($wp_filesystem->exists(CROWDHANDLER_PLUGIN_INDEX_COPY_FILE_PATH)) {
+		$wp_filesystem->move(CROWDHANDLER_PLUGIN_INDEX_COPY_FILE_PATH, CROWDHANDLER_PLUGIN_INDEX_FILE_PATH, true);
+	}
 }
 
 delete_option('crowdhandler_settings');

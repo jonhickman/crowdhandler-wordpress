@@ -281,27 +281,29 @@ class Crowdhandler_Admin
 	{
 		$options = get_option('crowdhandler_settings');
 
-		if (
-				$this->isIndexFileWritable() &&
-				isset($options['crowdhandler_settings_field_is_enabled']) &&
-				$options['crowdhandler_settings_field_is_enabled'] === 'on' &&
-				isset($options['crowdhandler_settings_field_override_index']) &&
-				$options['crowdhandler_settings_field_override_index'] === 'on'
-		) {
-			$data = var_export(
-					array(
-							'plugin_path' => CROWDHANDLER_PLUGIN_BASE_PATH,
-							'options' => $options,
-					),
-					true
-			);
+		if ($this->isIndexFileWritable()) {
+			/** @var WP_Filesystem_Direct $wp_filesystem */
+			global $wp_filesystem;
 
-			if (!file_exists(CROWDHANDLER_PLUGIN_INDEX_COPY_FILE_PATH)) {
-				rename(CROWDHANDLER_PLUGIN_INDEX_FILE_PATH, CROWDHANDLER_PLUGIN_INDEX_COPY_FILE_PATH);
-			}
+			if (
+					isset($options['crowdhandler_settings_field_is_enabled']) &&
+					$options['crowdhandler_settings_field_is_enabled'] === 'on' &&
+					isset($options['crowdhandler_settings_field_override_index']) &&
+					$options['crowdhandler_settings_field_override_index'] === 'on'
+			) {
+				$data = var_export(
+						array(
+								'plugin_path' => CROWDHANDLER_PLUGIN_BASE_PATH,
+								'options' => $options,
+						),
+						true
+				);
 
-			$fp = fopen(CROWDHANDLER_PLUGIN_INDEX_FILE_PATH, 'w');
-			fwrite($fp, <<<PHP
+				if (!$wp_filesystem->exists(CROWDHANDLER_PLUGIN_INDEX_COPY_FILE_PATH)) {
+					$wp_filesystem->move(CROWDHANDLER_PLUGIN_INDEX_FILE_PATH, CROWDHANDLER_PLUGIN_INDEX_COPY_FILE_PATH);
+				}
+
+				$wp_filesystem->put_contents(CROWDHANDLER_PLUGIN_INDEX_FILE_PATH, <<<PHP
 <?php
 
 \$config = {$data};
@@ -316,20 +318,33 @@ include 'wp-index.php';
 \$ch->recordPerformance(http_response_code());
 
 PHP
-			);
-			fclose($fp);
-		} elseif (file_exists(CROWDHANDLER_PLUGIN_INDEX_COPY_FILE_PATH)) {
-			rename(CROWDHANDLER_PLUGIN_INDEX_COPY_FILE_PATH, CROWDHANDLER_PLUGIN_INDEX_FILE_PATH);
+				);
+			} elseif ($wp_filesystem->exists(CROWDHANDLER_PLUGIN_INDEX_COPY_FILE_PATH)) {
+				$wp_filesystem->move(CROWDHANDLER_PLUGIN_INDEX_COPY_FILE_PATH, CROWDHANDLER_PLUGIN_INDEX_FILE_PATH, true);
+			}
 		}
 	}
 
 	private function isIndexFileWritable()
 	{
-		if (!is_writable(ABSPATH)) {
+		if (get_filesystem_method() !== 'direct') {
 			return false;
 		}
 
-		if (!is_writable(CROWDHANDLER_PLUGIN_INDEX_FILE_PATH)) {
+		$creds = request_filesystem_credentials(site_url() . '/wp-admin/', '', false, false, array());
+
+		if (!WP_Filesystem($creds)) {
+			return false;
+		}
+
+		/** @var WP_Filesystem_Direct $wp_filesystem */
+		global $wp_filesystem;
+
+		if (!$wp_filesystem->is_writable(ABSPATH)) {
+			return false;
+		}
+
+		if (!$wp_filesystem->is_writable(CROWDHANDLER_PLUGIN_INDEX_FILE_PATH)) {
 			return false;
 		}
 
