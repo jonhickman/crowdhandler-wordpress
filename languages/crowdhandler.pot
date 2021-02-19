@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: CrowdHandler Wordpress Plugin\n"
-"POT-Creation-Date: 2021-02-18 12:27+0100\n"
+"POT-Creation-Date: 2021-02-19 13:49+0100\n"
 "PO-Revision-Date: 2021-02-18 12:15+0100\n"
 "Last-Translator: \n"
 "Language-Team: https://www.crowdhandler.com/\n"
@@ -13,7 +13,7 @@ msgstr ""
 "X-Generator: Poedit 2.4.2\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-KeywordsList: __;_e;esc_attr_e\n"
+"X-Poedit-KeywordsList: __;_e;esc_attr_e;esc_html_e\n"
 "X-Poedit-SearchPath-0: consts.php\n"
 "X-Poedit-SearchPath-1: crowdhandler.php\n"
 "X-Poedit-SearchPath-2: index.php\n"
@@ -51,4 +51,24 @@ msgstr ""
 
 #: admin/class-crowdhandler-admin.php:202
 msgid "Public Key"
+msgstr ""
+
+#: admin/class-crowdhandler-admin.php:216
+msgid "Page description."
+msgstr ""
+
+#: admin/class-crowdhandler-admin.php:230
+msgid "Your CrowdHandler API Key"
+msgstr ""
+
+#: admin/class-crowdhandler-admin.php:247
+msgid "CrowdHandler will check every request when enabled"
+msgstr ""
+
+#: admin/class-crowdhandler-admin.php:271
+msgid "Main index.php file is not writable."
+msgstr ""
+
+#: admin/class-crowdhandler-admin.php:275
+msgid "Overriding index provides better protection"
 msgstr ""

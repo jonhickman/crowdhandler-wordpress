@@ -227,7 +227,7 @@ class Crowdhandler_Admin
 			class="crowdhandler-input crowdhandler-input--textarea"
 		><?php echo isset($options[$args['label_for']]) ? $options[$args['label_for']] : (''); ?></textarea>
 		<p class="description">
-			<?php esc_html_e( 'Public key field description', 'crowdhandler' ); ?>
+			<?php esc_html_e( 'Your CrowdHandler API Key', 'crowdhandler' ); ?>
 		</p>
 		<?php
 	}
@@ -244,7 +244,7 @@ class Crowdhandler_Admin
 			class="crowdhandler-input"
 		>
 		<p class="description">
-			<?php esc_html_e( 'Enabled field description', 'crowdhandler' ); ?>
+			<?php esc_html_e( 'CrowdHandler will check every request when enabled', 'crowdhandler' ); ?>
 		</p>
 		<?php
 	}
@@ -272,7 +272,7 @@ class Crowdhandler_Admin
 			</p>
 		<?php endif; ?>
 		<p class="description">
-			<?php esc_html_e('Override index field description', 'crowdhandler'); ?>
+			<?php esc_html_e('Overriding index provides better protection', 'crowdhandler'); ?>
 		</p>
 		<?php
 	}
