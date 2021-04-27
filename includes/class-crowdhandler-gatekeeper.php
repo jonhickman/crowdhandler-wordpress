@@ -47,7 +47,7 @@ class CrowdHandlerGateKeeper
 		$this->gateKeeper = new GateKeeper($api);
 
 		$this->gateKeeper->setIgnoreUrls(
-			"/^(.*\.(ico|css|js|json|pdf|xml|eot|ott|ttf|woff|woff2|gif|jpg|png|svg|avi|mov|mp4|mpeg|mpg|wmv|ogg|ogv)$)|(\/wp-admin)|(\/wp-content)|(\/wp-includes)/"
+			"/^(.*\.(ico|css|js|json|pdf|xml|eot|ott|ttf|woff|woff2|gif|jpg|png|svg|avi|mov|mp4|mpeg|mpg|wmv|ogg|ogv)$)|(\/wp-admin)|(\/wp-content)|(\/wp-includes)|(\/wp\-cron\.php)/"
 		);
 		$this->gateKeeper->checkRequest();
 		$this->gateKeeper->redirectIfNotPromoted();
