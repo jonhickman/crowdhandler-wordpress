@@ -17,11 +17,11 @@
 	"repositories": [
 		{
 			"type": "git",
-			"url": "git@github.com:crowdhandler/crowdhandler-php-sdk.git"
+			"url": "https://github.com/crowdhandler/crowdhandler-php-sdk.git"
 		},
 		{
 			"type": "git",
-			"url": "git@github.com:WordPress/wordpress-develop.git"
+			"url": "https://github.com/WordPress/wordpress-develop.git"
 		}
 	],
 	"require-dev": {
