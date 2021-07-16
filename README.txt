@@ -1,114 +1,95 @@
-=== Plugin Name ===
-Contributors: (this should be a list of wordpress.org userid's)
-Donate link: https://www.crowdhandler.com/
-Tags: comments, spam
-Requires at least: 3.0.1
-Tested up to: 3.4
-Stable tag: 4.3
+=== CrowdHandler virtual waiting room for WordPress ===
+Contributors: rickmutt
+Tags: waiting room, traffic management, queue management, ecommerce, CrowdHandler, 
+Tested up to: 5.7.2
+Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Here is a short description of the plugin.  This should be no more than 150 characters.  No markup here.
+During periods of heavy traffic, our queue management solution helps safeguard your website from crashing and protects your sales.
 
 == Description ==
 
-This is the long description.  No limit, and you can use Markdown (as well as in the following sections).
+We handle the crowd, so you can handle the sales.
 
-For backwards compatibility, if this section is missing, the full length of the short description will be used, and
-Markdown parsed.
+**Protect your sales**
+During periods of heavy traffic, our queue management solution helps safeguard your website from crashing and protects your sales.
 
-A few notes about the sections above:
+**Keep customers happy**
+During an important on-sale your customers become their most vocal. Make sure they’re saying lovely things
 
-*   "Contributors" is a comma separated list of wp.org/wp-plugins.org usernames
-*   "Tags" is a comma separated list of tags that apply to the plugin
-*   "Requires at least" is the lowest version that the plugin will work on
-*   "Tested up to" is the highest version that you've *successfully used to test the plugin*. Note that it might work on
-higher versions... this is just the highest one you've verified.
-*   Stable tag should indicate the Subversion "tag" of the latest stable version, or "trunk," if you use `/trunk/` for
-stable.
+**Always on protection**
+Not just for when you’re expecting company, make sure your website is always protected from nasty surprises.
 
-    Note that the `readme.txt` of the stable tag is the one that is considered the defining one for the plugin, so
-if the `/trunk/readme.txt` file says that the stable tag is `4.3`, then it is `/tags/4.3/readme.txt` that'll be used
-for displaying information about the plugin.  In this situation, the only thing considered from the trunk `readme.txt`
-is the stable tag pointer.  Thus, if you develop in trunk, you can update the trunk `readme.txt` to reflect changes in
-your in-development version, without having that information incorrectly disclosed about the current stable version
-that lacks those changes -- as long as the trunk's `readme.txt` points to the correct stable tag.
+**Get it running in no time**
+This plugin provides a simple installation of CrowdHandler on your WordPress site, giving you immediate access to our virtual waiting room in minutes.
 
-    If no stable tag is provided, it is assumed that trunk is stable, but you should specify "trunk" if that's where
-you put the stable version, in order to eliminate any doubt.
+You will need to create an account at [crowdhandler.com](https://signup.crowdhandler.com/?utm_source=WordPress&utm_medium=Plugin_Dir). Free and paid plans are available.
 
 == Installation ==
 
-This section describes how to install the plugin and get it working.
+= Simple installation =
 
-e.g.
+The CrowdHandler plugin is available to install via the WordPress plugin directory.
 
-1. Upload `crowdhandler.php` to the `/wp-content/plugins/` directory
+= Manual installation =
+
+1. Download the CrowdHandler plugin as a zip file
+1. Unzip `crowdhandler-wordpress.zip`
+1. Upload the `crowdhandler-wordpress` folder to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Place `<?php do_action('plugin_name_hook'); ?>` in your templates
+
+= Configuration =
+
+After installation, you need to configure the plugin:
+
+1. Access the settings page at `[yoursite.com]/wp-admin/admin.php?page=crowdhandler`
+1. Get your CrowdHandler API Public Key from the [CrowdHandler admin interface](https://admin.crowdhandler.com/account/api)
+1. Add your CrowdHandler API Public Key in the field labelled "Public Key"
+1. Check the "enabled" option. This will activate CrowdHandler for the site.
+1. Configure optional settings
+1. Select "Save Settings"
+
+Optional settings:
+
+* **Override index.php**: activating this option allows CrowdHandler to run in place of your WordPress website's default homepage. If you do not wish to do this, then your own server will take the load for all traffic to the homepage. For periods of very high demand, this may not be ideal.
 
 == Frequently Asked Questions ==
 
-= A question that someone might have =
+= Do I need a CrowdHandler account to use this plugin? =
 
-An answer to that question.
+Yes. You can [sign up at crowdhandler.com](https://signup.crowdhandler.com/?utm_source=WordPress&utm_medium=Plugin_Dir). Free and paid plans are available.
 
-= What about foo bar? =
+= I've set things up, but how do I configure my waiting room? =
 
-Answer to foo bar dilemma.
+This plugin installs CrowdHandler's waiting room onto your WordPress site. CrowdHandler settings are configured in your CrowdHandler dashboard at [https://admin.crowdhandler.com/](https://admin.crowdhandler.com/). Any changes will be reflected immediately on the WordPress site where you have loaded CrowdHandler.
 
-== Screenshots ==
+= Where can I get more help with setting things up? =
 
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
-(or jpg, jpeg, gif).
-2. This is the second screen shot
+Our [knowledge base](https://support.crowdhandler.com/) contains in depth documentation on CrowdHandler. If there is anything else you need to know, please submit a [support ticket](https://support.crowdhandler.com/support/tickets/new)
+
+= What are the CrowdHandler Terms of Service? =
+
+The full [terms of service are available here](https://www.crowdhandler.com/terms).
+
+= Where can I find the CrowdHandler Privacy Policy? =
+
+Our privacy policy is located at [www.crowdhandler.com/privacy](https://www.crowdhandler.com/privacy). It details our policy in relation to personal data, GDPR, cookie law and automated decision making.
+
+= What cookies are used by CrowdHandler and for what purposes? =
+
+Please see our [cookie policy](https://www.crowdhandler.com/cookies).
+
+= Is CrowdHandler GDPR compliant? =
+
+For most cases, CrowdHandler doesn't transmit or store personal data covered by GDPR. This allows you to continue to operate in a GDPR compliant manner whilst benefiting from CrowdHandler's service. There are some exceptions to this which are [outlined here](https://support.crowdhandler.com/support/solutions/articles/80000060300-gdpr-personal-data).
+
+= How do I remove CrowdHandler from my site? =
+
+You can uninstall the plugin at any time to remove CrowdHandler from your site. Alternatively, you can temporarily deactivate CrowdHandler by deselecting the "enabled" option in the CrowdHandler plugin settings. Disabling CrowdHandler using either of these methods does not affect your account in any way; if you need to close your account or change your subscription this needs to be done at [https://admin.crowdhandler.com/](https://admin.crowdhandler.com/).
+
 
 == Changelog ==
 
 = 1.0 =
-* A change since the previous version.
-* Another change.
-
-= 0.5 =
-* List versions from most recent at top to oldest at bottom.
-
-== Upgrade Notice ==
-
-= 1.0 =
-Upgrade notices describe the reason a user should upgrade.  No more than 300 characters.
-
-= 0.5 =
-This version fixes a security related bug.  Upgrade immediately.
-
-== Arbitrary section ==
-
-You may provide arbitrary sections, in the same format as the ones above.  This may be of use for extremely complicated
-plugins where more information needs to be conveyed that doesn't fit into the categories of "description" or
-"installation."  Arbitrary sections will be shown below the built-in sections outlined above.
-
-== A brief Markdown Example ==
-
-Ordered list:
-
-1. Some feature
-1. Another feature
-1. Something else about the plugin
-
-Unordered list:
-
-* something
-* something else
-* third thing
-
-Here's a link to [WordPress](http://wordpress.org/ "Your favorite software") and one to [Markdown's Syntax Documentation][markdown syntax].
-Titles are optional, naturally.
-
-[markdown syntax]: http://daringfireball.net/projects/markdown/syntax
-            "Markdown is what the parser uses to process much of the readme file"
-
-Markdown uses email style notation for blockquotes and I've been told:
-> Asterisks for *emphasis*. Double it up  for **strong**.
-
-`<?php code(); // goes in backticks ?>`
+* Initial release.

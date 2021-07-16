@@ -173,6 +173,18 @@ class Crowdhandler_Admin
 			'crowdhandler'
 		);
 
+        add_settings_field(
+			'crowdhandler_settings_field_public_key',
+			__('Public Key', 'crowdhandler'),
+			array($this, 'settings_field_public_key_callback'),
+			'crowdhandler',
+			'crowdhandler_settings_section',
+			array(
+				'label_for' => 'crowdhandler_settings_field_public_key',
+				'class' => 'crowdhandler_row',
+			)
+		);
+        
 		add_settings_field(
 			'crowdhandler_settings_field_is_enabled',
 			__('Enabled', 'crowdhandler'),
@@ -197,23 +209,14 @@ class Crowdhandler_Admin
 			)
 		);
 
-		add_settings_field(
-			'crowdhandler_settings_field_public_key',
-			__('Public Key', 'crowdhandler'),
-			array($this, 'settings_field_public_key_callback'),
-			'crowdhandler',
-			'crowdhandler_settings_section',
-			array(
-				'label_for' => 'crowdhandler_settings_field_public_key',
-				'class' => 'crowdhandler_row',
-			)
-		);
 	}
 
 	public function settings_section_callback($args)
 	{
 		?>
-		<p id="<?php echo esc_attr( $args['id'] ); ?>"><?php esc_html_e( 'Page description.', 'crowdhandler' ); ?></p>
+        <p id="<?php echo esc_attr( $args['id'] ); ?>">Install CrowdHandler on your WordPress site below.</p>
+        <p>You need a CrowdHandler account to complete the set up: <a href="https://signup.crowdhandler.com/?utm_source=WordPress&utm_medium=Plugin_Dir">Sign up here</a>.</p>
+        <p>Already have an account? Go to your <a href="https://admin.crowdhandler.com/">dashboard to set things up!</a></p>
 		<?php
 	}
 
@@ -227,7 +230,7 @@ class Crowdhandler_Admin
 			class="crowdhandler-input crowdhandler-input--textarea"
 		><?php echo isset($options[$args['label_for']]) ? $options[$args['label_for']] : (''); ?></textarea>
 		<p class="description">
-			<?php esc_html_e( 'Your CrowdHandler API Key', 'crowdhandler' ); ?>
+			<?php esc_html_e( 'Your CrowdHandler API Public Key', 'crowdhandler' ); ?>. Find your <a href="https://admin.crowdhandler.com/account/api">key here</a>.
 		</p>
 		<?php
 	}
@@ -244,7 +247,7 @@ class Crowdhandler_Admin
 			class="crowdhandler-input"
 		>
 		<p class="description">
-			<?php esc_html_e( 'CrowdHandler will check every request when enabled', 'crowdhandler' ); ?>
+			<?php esc_html_e( 'Activates CrowdHandler for this site', 'crowdhandler' ); ?>
 		</p>
 		<?php
 	}
@@ -272,7 +275,7 @@ class Crowdhandler_Admin
 			</p>
 		<?php endif; ?>
 		<p class="description">
-			<?php esc_html_e('Overriding index provides better protection', 'crowdhandler'); ?>
+			<?php esc_html_e('Optional, but recommended. If you do not wish to do this, then your own server will take the load for all traffic to the homepage.', 'crowdhandler'); ?>
 		</p>
 		<?php
 	}
