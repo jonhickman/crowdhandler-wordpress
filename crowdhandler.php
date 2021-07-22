@@ -13,7 +13,7 @@
  * @package           Crowdhandler
  *
  * @wordpress-plugin
- * Plugin Name:       CrowdHandler virtual waiting room for WordPress
+ * Plugin Name:       CrowdHandler virtual waiting room
  * Plugin URI:        https://signup.crowdhandler.com/?utm_source=WordPress&utm_medium=Plugin_Dir
  * Description:       During periods of heavy traffic, our queue management solution helps safeguard your website from crashing and protects your sales.
  * Version:           1.0.0
