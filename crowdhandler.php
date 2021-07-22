@@ -18,7 +18,6 @@
  * Description:       During periods of heavy traffic, our queue management solution helps safeguard your website from crashing and protects your sales.
  * Version:           1.0.0
  * Author:            CROWDHANDLER LTD
- * Author URI:        https://signup.crowdhandler.com/?utm_source=WordPress&utm_medium=Plugin_Dir
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       crowdhandler
