@@ -1,4 +1,4 @@
-=== CrowdHandler virtual waiting room for WordPress ===
+=== CrowdHandler virtual waiting room ===
 Contributors: rickmutt
 Tags: waiting room, traffic management, queue management, ecommerce, CrowdHandler, 
 Tested up to: 5.7.2
