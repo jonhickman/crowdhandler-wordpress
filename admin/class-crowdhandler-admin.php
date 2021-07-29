@@ -229,7 +229,7 @@ class Crowdhandler_Admin
 			id="<?php echo esc_attr( $args['label_for'] ); ?>"
 			name="crowdhandler_settings[<?php echo esc_attr( $args['label_for'] ); ?>]"
 			class="crowdhandler-input crowdhandler-input--textarea"
-		><?php echo isset($options[$args['label_for']]) ? $options[$args['label_for']] : (''); ?></textarea>
+		><?php echo isset($options[$args['label_for']]) ? esc_textarea($options[$args['label_for']]) : ''; ?></textarea>
 		<p class="description">
 			<?php esc_html_e( 'Your CrowdHandler API Public Key', 'crowdhandler' ); ?>. Find your <a target="_blank" href="https://admin.crowdhandler.com/account/api">key here</a>.
 		</p>
@@ -238,11 +238,16 @@ class Crowdhandler_Admin
 
 	public function settings_field_is_enabled_callback($args)
 	{
-		$options = get_option('crowdhandler_settings');
+		$options = get_option('crowdhandler_settings');		
 		?>
 		<input
 			type="checkbox"
-			<?php echo isset($options[$args['label_for']]) ? (checked( $options[$args['label_for']], 'on', false )) : ( '' ); ?>
+			<?php 
+			if ( isset($options[$args['label_for']]) )
+			{
+				esc_attr(checked( $options[$args['label_for']], "on", true ));
+			}
+			?>
 			id="<?php echo esc_attr( $args['label_for'] ); ?>"
 			name="crowdhandler_settings[<?php echo esc_attr( $args['label_for'] ); ?>]"
 			class="crowdhandler-input"
@@ -257,14 +262,16 @@ class Crowdhandler_Admin
 	{
 		$options = get_option('crowdhandler_settings');
 		$canOverrideIndexFile = $this->isIndexFileWritable();
-		$checked = '';
-		if (isset($options[$args['label_for']])) {
-			$checked = checked($options[$args['label_for']], 'on', false);
-		}
+
 		?>
 		<input
 			type="checkbox"
-			<?php echo $checked; ?>
+			<?php 
+			if ( isset($options[$args['label_for']]) )
+			{
+				esc_attr(checked( $options[$args['label_for']], "on", true ));
+			}
+			?>
 			id="<?php echo esc_attr( $args['label_for'] ); ?>"
 			name="crowdhandler_settings[<?php echo esc_attr( $args['label_for'] ); ?>]"
 			class="crowdhandler-input"
