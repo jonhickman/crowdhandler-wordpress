@@ -38,7 +38,7 @@ require_once CROWDHANDLER_PLUGIN_BASE_PATH . 'vendor/autoload.php';
  * Start at version 0.1.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define('CROWDHANDLER_VERSION', '1.1.1');
+define('CROWDHANDLER_VERSION', '1.1.3');
 
 /**
  * The code that runs during plugin activation.
